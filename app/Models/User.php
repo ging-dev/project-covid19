@@ -12,9 +12,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
-    /** @var array */
+    /** @var array<int, string> */
     protected $fillable = ['id', 'uid', 'name', 'photo'];
 
-    /** @var array */
+    /** @var array<int, string> */
+    protected $hidden = ['remember_token'];
+
+    /** @var array<int, string> */
     protected $guarded = [];
 }
