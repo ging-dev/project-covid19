@@ -12,13 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('vaccination_statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('uid', 32)->unique(); // GoogleId: 113493657564122458227
-            $table->string('first_name', 32);
-            $table->string('last_name', 32);
-            $table->string('photo', 120);
-            $table->rememberToken();
+            $table->string('name');
+            $table->string('phone_number')->unique();
+            $table->integer('number_injected');
+            $table->text('note');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('vaccination_statuses');
     }
 };

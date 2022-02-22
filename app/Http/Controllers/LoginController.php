@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
     public function index()
     {
         return view('login');
     }
 
-    public function callback(Request $request)
+    public function callback(Request $request): RedirectResponse
     {
         $request->validate([
             'token' => 'string|required|size:32',
@@ -22,20 +27,20 @@ class LoginController extends Controller
 
         $data = Http::get('http://ulogin.ru/token.php', [
             'token' => $request->post('token'),
-        ])->object();
+        ])->json();
 
         /** @var User */
-        $user = User::firstOrCreate(['uid' => $data->uid], [
-            'name' => name($data->first_name, $data->last_name),
-            'photo' => $data->photo_big,
-        ]);
+        $user = User::query()->firstOrCreate(
+            Arr::only($data, 'uid'),
+            Arr::only($data, ['first_name', 'last_name', 'photo'])
+        );
 
         Auth::loginUsingId($user->id, true);
 
         return redirect()->route('home');
     }
 
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::logout();
 

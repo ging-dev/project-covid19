@@ -12,13 +12,14 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('uid', 32)->unique(); // GoogleId: 113493657564122458227
-            $table->string('first_name', 32);
-            $table->string('last_name', 32);
-            $table->string('photo', 120);
-            $table->rememberToken();
+            $table->string('name', 32)->unique();
+            $table->integer('death');
+            $table->integer('treating');
+            $table->integer('cases');
+            $table->integer('recovered');
+            $table->integer('casesToday');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('locations');
     }
 };
