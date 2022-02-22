@@ -17,7 +17,15 @@
                 @foreach ($locations as $location)
                     <tr>
                         <td>{{ $location->name }}</td>
-                        <td>{{ $location->cases }}</td>
+                        <td>
+                            @if ($location->casesToday)
+                                <small class="text-success mr-1">
+                                    <i class="fas fa-arrow-up"></i>
+                                    {{ $location->casesToday }}
+                                </small>
+                            @endif
+                            {{ $location->cases }}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
