@@ -19,8 +19,8 @@
                     <tr>
                         <td>{{ $status->name }}</td>
                         <td>
-                            <div class="progress progress-xs">
-                                <div class="progress-bar progress-bar-danger" style="width: {{ round(($status->number_injected / 3) * 100, 0) }}%"></div>
+                            <div class="progress progress-xs progress-striped active">
+                                <div class="progress-bar bg-success" style="width: {{ round(($status->number_injected / 3) * 100, 0) }}%"></div>
                             </div>
                         </td>
                         <td>

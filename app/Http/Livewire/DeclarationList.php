@@ -4,9 +4,15 @@ namespace App\Http\Livewire;
 
 use App\Models\VaccinationStatus;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DeclarationList extends Component
 {
+    use WithPagination;
+
+    /** @var string */
+    protected $paginationTheme = 'bootstrap';
+
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
@@ -15,7 +21,7 @@ class DeclarationList extends Component
         return view('livewire.declaration-list', [
             'statuses' => VaccinationStatus::query()
                 ->orderBy('updated_at', 'desc')
-                ->paginate(10),
+                ->paginate(5),
         ]);
     }
 }
