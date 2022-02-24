@@ -7,11 +7,15 @@ use Livewire\Component;
 
 class VaccinationRate extends Component
 {
+    /**
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
     public function render()
     {
-        $rate = VaccinationStatus::selectRaw('count(*) as count')
+        $rate = VaccinationStatus::query()
+            ->getQuery()
+            ->selectRaw('count(*) as count')
             ->groupBy('number_injected')
-            ->get()
             ->pluck('count')
             ->toArray();
 
