@@ -19,12 +19,16 @@
                         <td>{{ $location->name }}</td>
                         <td>
                             @if ($location->casesToday)
-                                <small class="text-success mr-1">
+                                <small class="text-danger mr-1">
                                     <i class="fas fa-arrow-up"></i>
                                     {{ $location->casesToday }}
                                 </small>
                             @endif
                             {{ $location->cases }}
+                            <small class="mr-1">
+                                <i class="fas fa-skull"></i>
+                                {{ $location->death }}
+                            </small>
                         </td>
                     </tr>
                 @endforeach

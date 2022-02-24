@@ -6,6 +6,9 @@
         </h4>
     </div>
     <div class="card-body">
+        <center>
+            <img src="https://i.imgur.com/qg8RsRq.png" width="150px" class="d-inline-block align-top" alt="logo" />
+        </center>
         <form wire:submit.prevent="submit">
             @error('general') <div class="alert alert-danger" role="alert">{{ $message }}</div> @enderror
             <div class="form-group">
@@ -53,7 +56,10 @@
                     @error('otp') <span class="error invalid-feedback">{{ $message }}</span> @enderror
                 </div>
             @endif
-            <button class="btn btn-primary" type="submit">{{ __('Submit') }}</button>
+            <button class="btn btn-primary" type="submit">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" wire:loading wire:target="submit"></span>
+                {{ __('Submit') }}
+            </button>
         </form>
     </div>
 </div>
