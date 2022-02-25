@@ -12,9 +12,7 @@ class VaccinationRate extends Component
      */
     public function render()
     {
-        $rate = VaccinationStatus::query()
-            ->getQuery()
-            ->selectRaw('count(*) as count')
+        $rate = VaccinationStatus::selectRaw('count(*) as count')
             ->groupBy('number_injected')
             ->pluck('count')
             ->toArray();

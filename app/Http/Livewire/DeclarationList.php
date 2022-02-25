@@ -19,8 +19,7 @@ class DeclarationList extends Component
     public function render()
     {
         return view('livewire.declaration-list', [
-            'statuses' => VaccinationStatus::query()
-                ->orderBy('updated_at', 'desc')
+            'statuses' => VaccinationStatus::orderBy('updated_at', 'desc')
                 ->paginate(5),
         ]);
     }

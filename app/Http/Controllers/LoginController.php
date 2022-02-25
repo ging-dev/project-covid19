@@ -30,7 +30,7 @@ class LoginController extends Controller
         ])->json();
 
         /** @var User */
-        $user = User::query()->firstOrCreate(
+        $user = User::firstOrCreate(
             Arr::only($data, 'uid'),
             Arr::only($data, ['first_name', 'last_name', 'photo'])
         );

@@ -95,7 +95,7 @@ class Report extends Component
             );
         }
 
-        VaccinationStatus::query()->updateOrCreate([
+        VaccinationStatus::updateOrCreate([
             'phone_number' => $data['personalPhoneNumber'],
         ], [
             'name' => Str::title($data['fullname']),
