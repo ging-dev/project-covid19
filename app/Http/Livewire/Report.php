@@ -32,7 +32,7 @@ class Report extends Component
     public $otp;
 
     /**
-     * Show OTP input field
+     * Show OTP input field.
      *
      * @var bool
      */
@@ -61,12 +61,12 @@ class Report extends Component
     }
 
     /**
-     * @param array<string, string> $data
+     * @param  array<string, string>  $data
      * @return \Illuminate\Http\RedirectResponse|void
      */
     protected function vaccination($data)
     {
-        if (!$this->withOTP) {
+        if (! $this->withOTP) {
             $code = $this->makeRequest(self::OTP_SEARCH_URL, $data)
                 ->json('code', 0);
 
@@ -107,7 +107,7 @@ class Report extends Component
     }
 
     /**
-     * @param array<string, string> $query
+     * @param  array<string, string>  $query
      */
     protected function makeRequest(string $url, array $query): Response
     {
@@ -115,9 +115,9 @@ class Report extends Component
     }
 
     /**
-     * Real-time validation
+     * Real-time validation.
      *
-     * @param string $name
+     * @param  string  $name
      * @return void
      */
     public function updated($name)
