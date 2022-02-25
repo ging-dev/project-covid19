@@ -11,29 +11,27 @@
         </div>
     </div>
     <script>
-        var titles = ["One", "Two", "Three"];
-        var values = @json($rate);
-        var barColors = [
-        "#b91d47",
-        "#E8D803",
-        "#00D69D",
-        ];
+        var titles = @json($titles).map(function (i) {
+            return `Đã tiêm ${i} mũi`;
+        });
+
+        var barColors = ["#b91d47", "#E8D803", "#00D69D"];
 
         new Chart("vaccination", {
-        type: "pie",
-        data: {
-            labels: titles,
-            datasets: [{
-            backgroundColor: barColors,
-            data: values
-            }]
-        },
-        options: {
-            title: {
-            display: true,
-            text: "Vaccination Rate"
+            type: "pie",
+            data: {
+                labels: titles,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: @json($values)
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Vaccination Rate"
+                }
             }
-        }
         });
     </script>
 </div>

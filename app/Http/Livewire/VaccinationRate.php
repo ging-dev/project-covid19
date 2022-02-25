@@ -12,13 +12,14 @@ class VaccinationRate extends Component
      */
     public function render()
     {
-        $rate = VaccinationStatus::selectRaw('count(*) as count')
-            ->groupBy('number_injected')
-            ->pluck('count')
-            ->toArray();
+        $collection = VaccinationStatus::selectRaw(
+                'count(*) as count, number_injected'
+            )->groupBy('number_injected')
+            ->pluck('count', 'number_injected');
 
         return view('livewire.vaccination-rate', [
-            'rate' => $rate,
+            'titles' => $collection->keys(),
+            'values' => $collection->values(),
         ]);
     }
 }
