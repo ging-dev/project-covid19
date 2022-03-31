@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\VaccinationStatus;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -55,19 +54,25 @@ class Report extends Component
 
     public function submit(): void
     {
-        $data = $this->validateAndCast();
+        if (auth()->check()) {
+            $this->vaccination();
 
-        $this->vaccination($data);
+            return;
+        }
+
+        $this->addError('general', 'You must login first');
     }
 
     /**
-     * @param  array<string, string>  $data
      * @return \Illuminate\Http\RedirectResponse|void
      */
-    protected function vaccination($data)
+    protected function vaccination()
     {
+        $data = $this->validateAndCast();
+        $httpClient = Http::withOptions(['verify' => false]);
+
         if (! $this->withOTP) {
-            $code = $this->makeRequest(self::OTP_SEARCH_URL, $data)
+            $code = $httpClient->get(self::OTP_SEARCH_URL, $data)
                 ->json('code', 0);
 
             if (false === $this->withOTP = (bool) $code) {
@@ -77,7 +82,7 @@ class Report extends Component
             return;
         }
 
-        $data = $this->makeRequest(self::VACCINATION_URL, $data)
+        $data = $httpClient->get(self::VACCINATION_URL, $data)
             ->json('patientInfo', []);
 
         if ($data === []) {
@@ -101,17 +106,10 @@ class Report extends Component
             'name' => Str::title($data['fullname']),
             'number_injected' => \count($data['vaccinatedInfoes']),
             'note' => implode(', ', $note),
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('home');
-    }
-
-    /**
-     * @param  array<string, string>  $query
-     */
-    protected function makeRequest(string $url, array $query): Response
-    {
-        return Http::withOptions(['verify' => false])->get($url, $query);
     }
 
     /**

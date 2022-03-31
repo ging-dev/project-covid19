@@ -15,7 +15,7 @@ class Location extends Model
         'treating',
         'cases',
         'recovered',
-        'casesToday',
+        'cases_today',
     ];
 
     protected $guarded = [];

@@ -25,7 +25,7 @@ class LocationSeeder extends Seeder
                 'treating' => $location['treating'],
                 'cases' => $location['cases'],
                 'recovered' => $location['recovered'],
-                'casesToday' => $location['casesToday'],
+                'cases_today' => $location['casesToday'],
             ]);
         }
     }
