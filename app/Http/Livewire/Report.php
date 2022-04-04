@@ -115,7 +115,7 @@ class Report extends Component
     /**
      * Real-time validation.
      *
-     * @param  string  $name
+     * @param string $name
      * @return void
      */
     public function updated($name)
@@ -124,12 +124,13 @@ class Report extends Component
     }
 
     /**
-     * @return array<string, string>
+     * @return array{fullname: string, birthday: int, genderId: string, personalPhoneNumber: string}
      */
     protected function validateAndCast(): array
     {
+        /** @var array{fullname: string, birthday: int, genderId: string, personalPhoneNumber: string} */
         $data = $this->validate();
-        $data['birthday'] = strtotime($data['birthday']) * 1000;
+        $data['birthday'] = strtotime((string) $data['birthday']) * 1000;
 
         return $data;
     }

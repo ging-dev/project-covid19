@@ -10,6 +10,7 @@ class VaccinationStatus extends Model
 {
     use HasFactory;
 
+    /** @var list<string> */
     protected $fillable = [
         'name',
         'phone_number',

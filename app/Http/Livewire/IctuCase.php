@@ -21,7 +21,7 @@ class IctuCase extends Component
     }
 
     /**
-     * @return array<string, string>
+     * @return list<string>
      */
     protected function getDataFromAPI(): array
     {

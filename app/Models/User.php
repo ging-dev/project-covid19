@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+    /** @var list<string> */
     protected $fillable = [
         'uid',
         'first_name',
@@ -15,7 +17,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /** @var string[] */
+    /**
+     * @var list<string>
+     */
     protected $hidden = ['remember_token'];
 
     public function fullName(): Attribute
