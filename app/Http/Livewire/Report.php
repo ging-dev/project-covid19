@@ -115,7 +115,7 @@ class Report extends Component
     /**
      * Real-time validation.
      *
-     * @param string $name
+     * @param  string  $name
      * @return void
      */
     public function updated($name)
