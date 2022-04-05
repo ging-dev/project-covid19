@@ -17,7 +17,7 @@ class VaccinationSeeder extends Seeder
     {
         $data = json_decode(File::get(database_path('seed.json')), true);
         foreach ($data as $item) {
-            VaccinationStatus::insert(\array_merge($item, ['user_id' => 1]));
+            VaccinationStatus::create(\array_merge($item, ['user_id' => 1]));
         }
     }
 }

@@ -19,7 +19,7 @@ class LocationSeeder extends Seeder
             ->json('locations');
 
         foreach ($locations as $location) {
-            Location::insert([
+            Location::create([
                 'name' => $location['name'],
                 'death' => $location['death'],
                 'treating' => $location['treating'],
