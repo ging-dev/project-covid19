@@ -11,19 +11,17 @@
         </div>
     </div>
     <script>
-        var titles = @json($titles).map(function (i) {
-            return `Đã tiêm ${i} mũi`;
-        });
+        var data = @json($data);
 
         var barColors = ["#b91d47", "#E8D803", "#00D69D"];
 
         new Chart("vaccination", {
             type: "pie",
             data: {
-                labels: titles,
+                labels: Object.keys(data),
                 datasets: [{
                     backgroundColor: barColors,
-                    data: @json($values)
+                    data: Object.values(data)
                 }]
             },
             options: {

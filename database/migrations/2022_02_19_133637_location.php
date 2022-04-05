@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('treating');
             $table->integer('cases');
             $table->integer('recovered');
-            $table->integer('casesToday');
+            $table->integer('cases_today');
             $table->timestamps();
         });
     }

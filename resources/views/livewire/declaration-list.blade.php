@@ -12,6 +12,7 @@
                     <th style="width: 25%">Name</th>
                     <th>Progress</th>
                     <th>Note</th>
+                    <th>By</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,9 @@
                         </td>
                         <td>
                             {{ $status->note }}
+                        </td>
+                        <td>
+                            {{ $status->user->full_name }}
                         </td>
                     </tr>
                 @endforeach

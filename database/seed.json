@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Nguyễn Thành Nhân",
+        "phone_number": "0988794788",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (20-08-2021), COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (17-09-2021)"
+    },
+    {
+        "name": "Trần Xuân Thanh",
+        "phone_number": "0528383079",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (08-11-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (07-12-2021)"
+    },
+    {
+        "name": "Nguyễn Minh Đức",
+        "phone_number": "0981371108",
+        "number_injected": 3,
+        "note": "COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (13-10-2021), COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (22-11-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (22-12-2021)"
+    },
+    {
+        "name": "Dương Thị Mai",
+        "phone_number": "0344969346",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine AstraZeneca (23-10-2021), COVID-19 Vaccine AstraZeneca (30-11-2021)"
+    },
+    {
+        "name": "Lý Văn Toàn",
+        "phone_number": "0866250626",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine AstraZeneca (26-10-2021), COVID-19 Vaccine AstraZeneca (26-11-2021)"
+    },
+    {
+        "name": "Vũ Đình Dũng",
+        "phone_number": "0862803831",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (08-11-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (20-12-2021)"
+    },
+    {
+        "name": "Nguyễn Vũ Tiến Anh",
+        "phone_number": "0393256032",
+        "number_injected": 3,
+        "note": "COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (30-09-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (21-10-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (25-01-2022)"
+    },
+    {
+        "name": "Nguyễn Ngọc Thùy",
+        "phone_number": "0387980489",
+        "number_injected": 3,
+        "note": "COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (09-09-2021), COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (07-10-2021), COVID-19 Vaccine AstraZeneca (07-01-2022)"
+    },
+    {
+        "name": "Trần Đức Duy",
+        "phone_number": "0987096201",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (01-11-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (30-11-2021)"
+    },
+    {
+        "name": "Nguyễn Thị Mai Phương",
+        "phone_number": "0353668108",
+        "number_injected": 2,
+        "note": "COVID-19 Vaccine AstraZeneca (26-10-2021), COVID-19 Vaccine AstraZeneca (29-11-2021)"
+    },
+    {
+        "name": "Nguyễn Đình Hoan",
+        "phone_number": "0796490966",
+        "number_injected": 3,
+        "note": "COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (20-10-2021), COVID-19 Vaccine (Vero Cell), Inactivated (Sinopharm) (19-11-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (23-01-2022)"
+    },
+    {
+        "name": "Nguyễn Hương Ly",
+        "phone_number": "0379903286",
+        "number_injected": 1,
+        "note": "COVID-19 Vaccine AstraZeneca (30-07-2021)"
+    },
+    {
+        "name": "Phạm Cao Thuyết",
+        "phone_number": "0336654200",
+        "number_injected": 3,
+        "note": "COVID-19 Vaccine AstraZeneca (18-08-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (15-10-2021), COVID-19 Vaccine Comirnaty (Pfizer\/BioNtech) (20-01-2022)"
+    }
+]

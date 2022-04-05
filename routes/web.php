@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/login', [LoginController::class, 'index'])
-    ->name('login');
-
-Route::get('/logout', [LoginController::class, 'logout'])
-    ->name('logout');
-
-Route::post('/login/callback', [LoginController::class, 'callback'])
-    ->name('login.callback');
+Route::controller(AuthController::class)
+    ->prefix('login')
+    ->group(function () {
+        Route::get('/', 'index')
+            ->name('auth.login');
+        Route::get('logout', 'logout')
+            ->name('auth.logout');
+        Route::post('callback', 'callback')
+            ->name('auth.callback');
+    });

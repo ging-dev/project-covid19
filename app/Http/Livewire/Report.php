@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\VaccinationStatus;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -55,63 +54,61 @@ class Report extends Component
 
     public function submit(): void
     {
-        $data = $this->validateAndCast();
+        if (! auth()->check()) {
+            $this->redirect(route('auth.login'));
+        }
 
-        $this->vaccination($data);
+        if ($error = $this->handling()) {
+            $this->addError(...$error);
+        }
     }
 
     /**
-     * @param  array<string, string>  $data
-     * @return \Illuminate\Http\RedirectResponse|void
+     * @return array{0: string, 1: string}|false
      */
-    protected function vaccination($data)
+    protected function handling(): array|false
     {
+        $data = $this->validate();
+        $httpClient = Http::withOptions(['verify' => false]);
+
+        $data['birthday'] = strtotime($data['birthday']) * 1000;
+
         if (! $this->withOTP) {
-            $code = $this->makeRequest(self::OTP_SEARCH_URL, $data)
-                ->json('code', 0);
+            $code = $httpClient->get(self::OTP_SEARCH_URL, $data)->json('code', 0);
 
             if (false === $this->withOTP = (bool) $code) {
-                $this->addError('general', 'Your information does not exist on the system');
+                return ['general', 'Your information does not exist on the system'];
+            }
+        } else {
+            $patientInfo = $httpClient->get(self::VACCINATION_URL, $data)->json('patientInfo', []);
+
+            if ($patientInfo === []) {
+                return ['otp', 'The verification code is incorrect'];
             }
 
-            return;
+            $note = [];
+            foreach ($patientInfo['vaccinatedInfoes'] as $info) {
+                $note[] = sprintf(
+                    '%s (%s)',
+                    $info['vaccineName'],
+                    \date('d-m-Y', $info['injectionDate'] / 1000),
+                );
+            }
+
+            VaccinationStatus::updateOrCreate([
+                'phone_number' => $patientInfo['personalPhoneNumber'],
+            ], [
+                'name' => Str::title($patientInfo['fullname']),
+                'number_injected' => \count($patientInfo['vaccinatedInfoes']),
+                'note' => implode(', ', $note),
+                'user_id' => auth()->id(),
+                'updated_at' => now(),
+            ]);
+
+            $this->redirect(route('home'));
         }
 
-        $data = $this->makeRequest(self::VACCINATION_URL, $data)
-            ->json('patientInfo', []);
-
-        if ($data === []) {
-            $this->addError('otp', 'The verification code is incorrect');
-
-            return;
-        }
-
-        $note = [];
-        foreach ($data['vaccinatedInfoes'] as $info) {
-            $note[] = sprintf(
-                '%s (%s)',
-                $info['vaccineName'],
-                \date('d-m-Y', $info['injectionDate'] / 1000),
-            );
-        }
-
-        VaccinationStatus::updateOrCreate([
-            'phone_number' => $data['personalPhoneNumber'],
-        ], [
-            'name' => Str::title($data['fullname']),
-            'number_injected' => \count($data['vaccinatedInfoes']),
-            'note' => implode(', ', $note),
-        ]);
-
-        return redirect()->route('home');
-    }
-
-    /**
-     * @param  array<string, string>  $query
-     */
-    protected function makeRequest(string $url, array $query): Response
-    {
-        return Http::withOptions(['verify' => false])->get($url, $query);
+        return false;
     }
 
     /**
@@ -123,17 +120,6 @@ class Report extends Component
     public function updated($name)
     {
         $this->validateOnly($name);
-    }
-
-    /**
-     * @return array<string, string>
-     */
-    protected function validateAndCast(): array
-    {
-        $data = $this->validate();
-        $data['birthday'] = strtotime($data['birthday']) * 1000;
-
-        return $data;
     }
 
     /**

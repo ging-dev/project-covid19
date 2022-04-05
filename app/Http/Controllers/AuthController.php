@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory

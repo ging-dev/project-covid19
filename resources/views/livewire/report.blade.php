@@ -10,6 +10,7 @@
             <img src="https://i.imgur.com/qg8RsRq.png" width="150px" class="d-inline-block align-top" alt="logo" />
         </center>
         <form wire:submit.prevent="submit">
+            @error('success') <div class="alert alert-success" role="alert">{{ $message }}</div> @enderror
             @error('general') <div class="alert alert-danger" role="alert">{{ $message }}</div> @enderror
             <div class="form-group">
                 <div class="row">

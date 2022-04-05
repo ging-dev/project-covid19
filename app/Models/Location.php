@@ -9,14 +9,16 @@ class Location extends Model
 {
     use HasFactory;
 
+    /** @var list<string> */
     protected $fillable = [
         'name',
         'death',
         'treating',
         'cases',
         'recovered',
-        'casesToday',
+        'cases_today',
     ];
 
+    /** @var list<string> */
     protected $guarded = [];
 }

@@ -94,14 +94,14 @@
                                     </div>
                                 </div>
                                 <div class="dropdown-divider"></div>
-                                <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">
+                                <a href="{{ route('auth.logout') }}" class="dropdown-item dropdown-footer">
                                 <i class="fa fa-sign-out-alt"></i> Logout
                                 </a>
                             </div>
                         </li>
                         @else
                         <li class="nav-item">
-                            <a href="{{ route('login') }}" class="nav-link">
+                            <a href="{{ route('auth.login') }}" class="nav-link">
                             <i class="fa fa-sign-in-alt"></i> Login
                             </a>
                         </li>

@@ -18,10 +18,10 @@
                     <tr>
                         <td>{{ $location->name }}</td>
                         <td>
-                            @if ($location->casesToday)
+                            @if ($location->cases_today)
                                 <small class="text-danger mr-1">
                                     <i class="fas fa-arrow-up"></i>
-                                    {{ $location->casesToday }}
+                                    {{ $location->cases_today }}
                                 </small>
                             @endif
                             {{ $location->cases }}

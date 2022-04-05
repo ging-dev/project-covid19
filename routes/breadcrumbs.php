@@ -11,5 +11,5 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
 // Login
 Breadcrumbs::for('login', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
-    $trail->push('Login', route('login'));
+    $trail->push('Login', route('auth.login'));
 });

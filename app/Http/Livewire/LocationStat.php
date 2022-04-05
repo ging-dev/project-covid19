@@ -19,7 +19,7 @@ class LocationStat extends Component
     public function render()
     {
         return view('livewire.location', [
-            'locations' => Location::paginate(10, pageName: 'locationPage'),
+            'locations' => Location::orderBy('cases', 'desc')->paginate(10, pageName: 'locationPage'),
         ]);
     }
 }
