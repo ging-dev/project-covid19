@@ -19,12 +19,17 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
 Route::controller(AuthController::class)
-    ->prefix('login')
+    ->prefix('auth')
     ->group(function () {
-        Route::get('/', 'index')
-            ->name('auth.login');
-        Route::get('logout', 'logout')
+        Route::middleware('guest')
+            ->group(function () {
+                Route::get('login', 'index')
+                    ->name('auth.login');
+                Route::post('callback', 'callback')
+                    ->name('auth.callback');
+            });
+
+        Route::middleware('auth')
+            ->get('logout', 'logout')
             ->name('auth.logout');
-        Route::post('callback', 'callback')
-            ->name('auth.callback');
     });
