@@ -116,11 +116,11 @@
                 <div class="content-header">
                     <div class="container">
                         <div class="row mb-2">
-                            <div class="col-sm-6">
+                            {{-- <div class="col-sm-6">
                                 <h1 class="m-0">Dashboard</h1>
-                            </div>
+                            </div> --}}
                             <!-- /.col -->
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <ol class="breadcrumb float-sm-right">
                                     @yield('breadcrumb')
                                 </ol>
