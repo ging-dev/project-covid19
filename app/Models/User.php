@@ -21,6 +21,9 @@ class User extends Authenticatable
      */
     protected $hidden = ['remember_token'];
 
+    /**
+     * @return Attribute<callable(): string, null>
+     */
     public function fullName(): Attribute
     {
         return new Attribute(

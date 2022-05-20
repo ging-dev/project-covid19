@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 class HomeController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function index()
     {

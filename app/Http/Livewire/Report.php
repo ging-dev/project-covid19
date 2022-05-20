@@ -56,6 +56,8 @@ class Report extends Component
     {
         if (! auth()->check()) {
             $this->redirect(route('auth.login'));
+
+            return;
         }
 
         if ($error = $this->handling()) {
@@ -66,7 +68,7 @@ class Report extends Component
     /**
      * @return array{0: string, 1: string}|false
      */
-    protected function handling(): array|false
+    protected function handling()
     {
         $data = $this->validate();
         $httpClient = Http::withOptions(['verify' => false]);
@@ -91,7 +93,7 @@ class Report extends Component
                 $note[] = sprintf(
                     '%s (%s)',
                     $info['vaccineName'],
-                    \date('d-m-Y', $info['injectionDate'] / 1000),
+                    (string) \date('d-m-Y', $info['injectionDate'] / 1000),
                 );
             }
 
@@ -123,7 +125,7 @@ class Report extends Component
     }
 
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function render()
     {

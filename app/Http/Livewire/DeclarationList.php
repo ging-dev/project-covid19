@@ -14,12 +14,12 @@ class DeclarationList extends Component
     protected $paginationTheme = 'bootstrap';
 
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function render()
     {
         return view('livewire.declaration-list', [
-            'statuses' => VaccinationStatus::orderBy('updated_at', 'desc')
+            'statuses' => VaccinationStatus::with('user')->orderBy('updated_at', 'desc')
                 ->paginate(5),
         ]);
     }
