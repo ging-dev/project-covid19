@@ -11,7 +11,7 @@ class IctuCase extends Component
     const API_URL = 'https://apps.ictu.vn:9081/covid/api/v1/user-profile';
 
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function render()
     {

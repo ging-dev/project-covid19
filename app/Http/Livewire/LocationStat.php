@@ -14,7 +14,7 @@ class LocationStat extends Component
     protected $paginationTheme = 'bootstrap';
 
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function render()
     {

@@ -20,7 +20,7 @@ namespace App\Models{
  * @property int $treating
  * @property int $cases
  * @property int $recovered
- * @property int $casesToday
+ * @property int $cases_today
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Location newModelQuery()
@@ -76,9 +76,10 @@ namespace App\Models{
  * @property string $phone_number
  * @property int $number_injected
  * @property string $note
+ * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus query()
@@ -89,6 +90,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus whereNumberInjected($value)
  * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus wherePhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|VaccinationStatus whereUserId($value)
  */
 	class VaccinationStatus extends \Eloquent {}
 }

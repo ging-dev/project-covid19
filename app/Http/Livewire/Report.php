@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class Report extends Component
 {
     const OTP_SEARCH_URL = 'https://tiemchungcovid19.gov.vn/api/vaccination/public/otp-search';
@@ -52,20 +55,24 @@ class Report extends Component
             : $rules;
     }
 
+    /**
+     * @psalm-suppress PossiblyUndefinedMethod
+     */
     public function submit(): void
     {
         if (! auth()->check()) {
-            $this->redirect(route('home'));
+            $this->redirect(route('auth.login'));
 
             return;
         }
 
         if ($error = $this->handling()) {
-            $this->addError(...$error);
+            $this->addError($error[0], $error['1']);
         }
     }
 
     /**
+     * @psalm-suppress PossiblyUndefinedMethod
      * @return array{0: string, 1: string}|false
      */
     protected function handling()
@@ -125,7 +132,7 @@ class Report extends Component
     }
 
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function render()
     {

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    /** @var list<string> */
+    /** @var array<array-key, string> */
     protected $fillable = [
         'uid',
         'first_name',
@@ -17,11 +17,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * @var list<string>
+     * @psalm-suppress NonInvariantDocblockPropertyType
+     * @var array<int, string>
      */
     protected $hidden = ['remember_token'];
 
     /**
+     * @psalm-suppress TooManyTemplateParams
      * @return Attribute<callable(): string, null>
      */
     public function fullName(): Attribute

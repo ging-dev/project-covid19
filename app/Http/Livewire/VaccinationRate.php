@@ -8,7 +8,7 @@ use Livewire\Component;
 class VaccinationRate extends Component
 {
     /**
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     * @return \Illuminate\View\View
      */
     public function render()
     {
