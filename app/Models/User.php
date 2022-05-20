@@ -18,12 +18,14 @@ class User extends Authenticatable
 
     /**
      * @psalm-suppress NonInvariantDocblockPropertyType
+     *
      * @var array<int, string>
      */
     protected $hidden = ['remember_token'];
 
     /**
      * @psalm-suppress TooManyTemplateParams
+     *
      * @return Attribute<callable(): string, null>
      */
     public function fullName(): Attribute
